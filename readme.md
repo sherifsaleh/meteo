@@ -19,6 +19,10 @@ npm install
 # start server
 npm run develop
 
+# Generated to public : public/assets/js/bundle.min.js (Production)
+npm run bundle:prod
+
+
 # Applciation url: http://localhost:3000
 ```
 

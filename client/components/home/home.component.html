@@ -1,26 +1,7 @@
-<div class="ui container">
-	<h1>Hello there I'm talkin to you</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 padding-0">
+      <app-gmap></app-gmap>
+    </div>
+  </div>
 </div>
-<sebm-google-map
-  [latitude]="lat"
-  [longitude]="lng"
-  [zoom]="zoom"
-  [disableDefaultUI]="false"
-  [zoomControl]="true"
-  (mapClick)="mapClicked($event)">
-
-  <sebm-google-map-marker
-      *ngFor="let m of markers; let i = index"
-      (markerClick)="clickedMarker(m.label, i)"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [label]="m.label"
-      [markerDraggable]="m.draggable"
-      (dragEnd)="markerDragEnd(m, $event)">
-
-    <sebm-google-map-info-window>
-      <strong>InfoWindow content</strong>
-    </sebm-google-map-info-window>
-
-  </sebm-google-map-marker>
-</sebm-google-map>

@@ -13,8 +13,9 @@ var isPublic = typeof window != "undefined";
         'angular2-in-memory-web-api': (isPublic)? 'angular2-in-memory-web-api' : 'node_modules/angular2-in-memory-web-api',
         'rxjs':                       (isPublic)? 'rxjs' : 'node_modules/rxjs',
         'ng-semantic':                (isPublic)? 'ng-semantic' : 'node_modules/ng-semantic',
-        //'angular2-google-maps':       (isPublic)? 'node_modules/angular2-google-maps'
-        'angular2-google-maps':       'https://npmcdn.com/angular2-google-maps@0.12.0'
+        //'angular2-google-maps':       'node_modules/angular2-google-maps'
+        //'angular2-google-maps':       'https://npmcdn.com/angular2-google-maps@0.12.0'
+        'angular2-google-maps':         (isPublic)? 'angular2-google-maps' : 'node_modules/angular2-google-maps'
 
     };
     // packages tells the System loader how to load when no filename and/or no extension
@@ -23,7 +24,7 @@ var isPublic = typeof window != "undefined";
         'rxjs':                       { defaultExtension: 'js' },
         'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
         'ng-semantic':                { main: 'ng-semantic', defaultExtension: 'js' },
-        'angular2-google-maps/core':  { main: 'index.js', defaultExtension: 'js' }
+        'angular2-google-maps/core':  { defaultExtension: 'js', main: 'index.js' }
     };
     var ngPackageNames = [
         'common',

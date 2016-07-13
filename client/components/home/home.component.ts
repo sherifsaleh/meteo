@@ -4,6 +4,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 
 import { GmapComponent } from "../gmap/gmap.component";
+import { TwitterComponent } from "../twitter/twitter.component";
 
 
 
@@ -11,7 +12,7 @@ import { GmapComponent } from "../gmap/gmap.component";
 	selector: "home",
 	templateUrl: `client/components/home/home.component.html`,
     styleUrls: ['client/components/home/home.component.css'],
-    directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, GmapComponent]
+    directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, GmapComponent, TwitterComponent]
 })
 export class HomeComponent {
 	constructor(public http: Http) {}

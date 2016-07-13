@@ -1,0 +1,26 @@
+<h3>Tweets</h3>
+<ul class="list-unstyled">
+    <li *ngFor="let tweet of tweets">
+        <article class="panel panel-default">
+          <div class="panel-body">
+              <div class="media">
+                <figure class="media-left">
+                    <img src="{{tweet.user.profile_image_url}}" class="media-object" >
+                </figure>
+                <div class="media-body">
+                  <h4 class="media-heading">{{tweet.user.name}} <small class="text-muted"><time>{{tweet.created_at | date:'HH:mm' }} -  {{tweet.created_at | date }}</time></small></h4>
+                  {{tweet.text}}
+
+
+
+                  <figure class="media-left" *ngIf="tweet.entities.media">
+                      <img src="{{tweet.entities.media[0].media_url}}" class="img-responsive" >
+                  </figure>
+
+
+                </div>
+              </div>
+          </div>
+        </article>
+    </li>
+</ul>

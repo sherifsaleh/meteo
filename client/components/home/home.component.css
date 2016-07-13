@@ -1,0 +1,11 @@
+.tweets-section {
+    margin-top: 40px;
+    background: #FAFAFA;
+}
+
+
+@media (min-width: 768px) {
+    .map-section {
+        position: fixed;
+    }
+}

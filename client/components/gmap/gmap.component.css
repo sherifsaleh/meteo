@@ -1,3 +1,5 @@
 .sebm-google-map-container {
        height: 600px;
+       margin-top: 40px;
+       height: 100vh;
 }

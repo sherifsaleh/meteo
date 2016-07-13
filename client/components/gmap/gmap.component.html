@@ -3,8 +3,7 @@
   [longitude]="lng"
   [zoom]="zoom"
   [disableDefaultUI]="false"
-  [zoomControl]="true"
-  (mapClick)="mapClicked($event)">
+  [zoomControl]="true">
 
   <sebm-google-map-marker
       *ngFor="let m of markers; let i = index"
@@ -12,12 +11,18 @@
       [latitude]="m.lat"
       [longitude]="m.lng"
       [label]="m.label"
-      [markerDraggable]="m.draggable"
-      (dragEnd)="markerDragEnd(m, $event)">
+      [isOpen]="i.isOpen"
+      >
 
     <sebm-google-map-info-window>
-      <strong>InfoWindow content</strong>
+      <strong *ngIf="weather">
+        {{m.label}}
+        {{m.temp | number:'2.0-0' }}°
+      </strong>
     </sebm-google-map-info-window>
 
   </sebm-google-map-marker>
+
+
 </sebm-google-map>
+

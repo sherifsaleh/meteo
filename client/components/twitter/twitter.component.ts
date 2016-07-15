@@ -11,10 +11,9 @@ import { TwitterService } from '../../service/twitter.service';
     providers: [TwitterService]
 })
 export class TwitterComponent implements OnInit,  OnChanges{
-    //customers: Observable<any>;
-    //tweets: Promise<any>;
     tweets: any[];
     @Input() cityName: string;
+
 
     constructor( private _twitterService: TwitterService ) {
     }
@@ -22,18 +21,10 @@ export class TwitterComponent implements OnInit,  OnChanges{
 
 
     ngOnInit() {
-        //this.tweets = this._twitterService.getTweets('France');
     }
 
-    ngOnChanges ( changes: {[cityName: string]: SimpleChange} ) {
-        this.tweets = this._twitterService.getTweets(this.cityName);
-    }
-
-    // getCityTweets( city: string ){
-    //     this.tweets = this._twitterService.getTweets(city);
-    // }
-
-
+    ngOnChanges ( changes: {[cityName: string] : SimpleChange} ) {
+        this.tweets = this._twitterService.getTweets(this.cityName);    }
 
 
 }

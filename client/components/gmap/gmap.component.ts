@@ -38,6 +38,7 @@ export class GmapComponent implements OnInit {
     tweets: any;
     label: any; // Clicked marker city name;
     cityName: string;
+    loadingStatus:boolean;
 
 
     //constructor ( private _http : Http ){}
@@ -73,6 +74,7 @@ export class GmapComponent implements OnInit {
 
         // sending changes of the city name  to the twitter component
         this.cityName = label;
+        this.loadingStatus = true;
 
     }
 

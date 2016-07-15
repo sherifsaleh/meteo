@@ -1,17 +1,12 @@
 ## Angular2 Express Starter
 
-Demo: https://express-angular2.herokuapp.com/
+Angular2 Express Starter to handle server on heroku: https://express-angular2.herokuapp.com/
 
-- Angular 2 rc.4
-- Express
-- jwt ( JSON Web Tokens )
-- ng-semantic ( https://github.com/vladotesanovic/ngSemantic )
-- SystemJS ( loader )
 
 ## Install
 ```bash
-git clone https://github.com/vladotesanovic/angular2-express-starter
-cd angular2-express-starter
+git clone git@github.com:sherifsaleh/meteo.git
+cd meteo
 
 # Install dependencies
 npm install
@@ -42,3 +37,5 @@ Comment out
 <script src="js/bundle.min.js"></script>
 ```
 # meteo
+
+Is a experimental web app with angualr 2, integrating google maps, openweathermap, and codebird ( for twitter )

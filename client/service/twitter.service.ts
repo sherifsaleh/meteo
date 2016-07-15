@@ -36,6 +36,7 @@ export class TwitterService implements OnInit {
     private _tweets: any[] = [];
 
 
+
     constructor(private _http: Http) { }
 
     ngOnInit() {
@@ -64,13 +65,21 @@ export class TwitterService implements OnInit {
                     self._tweetsReturnedArray.length = 0;
                     // push new elements to array
                     theTweets.forEach(pushTweet);
+
+
                 }else {
                     // if array is empty push new elements directly
                     theTweets.forEach(pushTweet);
                 }
             },
-            true
+            true // important as docs says
         );
+
+
+
+
+
+
 
         return self._tweetsReturnedArray;
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnChanges, Input} from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Subscription }   from 'rxjs/Subscription';
 import { TwitterService } from '../../service/twitter.service';
@@ -10,7 +10,7 @@ import { TwitterService } from '../../service/twitter.service';
     templateUrl: `client/components/twitter/twitter.component.html`,
     providers: [TwitterService]
 })
-export class TwitterComponent implements OnInit, OnDestroy, OnChanges{
+export class TwitterComponent implements OnInit,  OnChanges{
     //customers: Observable<any>;
     //tweets: Promise<any>;
     tweets: any[];

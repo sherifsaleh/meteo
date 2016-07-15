@@ -1,6 +1,5 @@
 import { Component, OnInit} from "@angular/core";
 import { SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES } from "ng-semantic";
-import { AstronautComponent } from "../astronaut/astronaut.component";
 import { TwitterComponent } from '../twitter/twitter.component';
 
 //import { Http } from "@angular/http";
@@ -30,7 +29,7 @@ interface marker {
     selector: "app-gmap",
     templateUrl: `client/components/gmap/gmap.component.html`,
     styleUrls: ['client/components/gmap/gmap.component.css'],
-    directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, AstronautComponent, TwitterComponent],
+    directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, TwitterComponent],
     providers: [WeatherService, TwitterService]
 })
 export class GmapComponent implements OnInit {
@@ -114,10 +113,10 @@ export class GmapComponent implements OnInit {
             draggable: false
         },
         {
-            lat: 43.7384176,
-            lng: 7.4246158,
+            lat: 43.5528470,
+            lng: 7.0173690,
             temp: 0,
-            label: 'Monaco',
+            label: 'Cannes',
             draggable: false
         },
         {

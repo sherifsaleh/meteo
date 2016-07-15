@@ -1,6 +1,6 @@
-## Angular2 Express Starter
+## Angular 2 experimental web app with google maps, tweets and weather
 
-Angular2 Express Starter to handle server on heroku: https://express-angular2.herokuapp.com/
+Angular 2 implements Express server to work on heroku: https://meteo-tweets.herokuapp.com/
 
 
 ## Install

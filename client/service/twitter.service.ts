@@ -60,7 +60,6 @@ export class TwitterService implements OnInit {
 
                 // check if array is not empty so empty it
                 if( self._tweetsReturnedArray.length) {
-                    console.log( reply );
                     // empty array
                     self._tweetsReturnedArray.length = 0;
                     // push new elements to array

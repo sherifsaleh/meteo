@@ -12,28 +12,7 @@ import 'codebird'; // codebird twitter api
 
 
 @Injectable()
-export class TwitterService implements  OnInit{
-
-    cityTag: any = 'france'; // Clicked marker city name from the gmap component
-
-
-
-    // Observable string sources
-    private missionAnnouncedSource = new Subject<string>();
-    private missionConfirmedSource = new Subject<string>();
-    // Observable string streams
-    missionAnnounced$ = this.missionAnnouncedSource.asObservable();
-    missionConfirmed$ = this.missionConfirmedSource.asObservable();
-    // Service message commands
-    announceMission(mission: string) {
-      this.missionAnnouncedSource.next(mission);
-    }
-    confirmMission(astronaut: string) {
-      this.missionConfirmedSource.next(astronaut);
-    }
-
-
-
+export class TwitterService implements OnInit {
     /*
     // https://dev.twitter.com/overview/documentation
     // https://dev.twitter.com/oauth/overview/introduction
@@ -42,11 +21,19 @@ export class TwitterService implements  OnInit{
     // https://dev.twitter.com/rest/public
     // https://github.com/jublonet/codebird-js
    */
+
+
+    private consumer_key = 'IRkI27h1sZShMApzLsmPgVtAf';
+    private consumer_secret = 'vwbOSovZiFivpjJGoichrbEU9feP6p6cqIMz2odFB9igxXo2iv'
+    private access_token_key = '118041048-BkkdDMesw6W6hhta0TGQByutOHP0gsKSOS7dRfMm';
+    private access_token_secret = '3QrlwGn7x5N29gzDXhmj0oITEkCDkoxdTxCvyrVFElM88';
+
     private _codebirdAuthWindow: Window;
     private _twitterConfig: Object;
     private _cb: Codebird;
     private _authToken: string;
-    private _arryTemp: any[] = [];
+    private _tweetsReturnedArray: any[] = [];
+    private _tweets: any[] = [];
 
 
     constructor(private _http: Http) { }
@@ -54,33 +41,39 @@ export class TwitterService implements  OnInit{
     ngOnInit() {
     }
 
-    ngOnChanges() : void {
-
-    }
-
-
-
-
-    getTweets() {
+    getTweets(city: string) {
         var self = this;
         var _cb = new Codebird();
-        _cb.setConsumerKey('IRkI27h1sZShMApzLsmPgVtAf', 'vwbOSovZiFivpjJGoichrbEU9feP6p6cqIMz2odFB9igxXo2iv');
-        _cb.setToken('118041048-BkkdDMesw6W6hhta0TGQByutOHP0gsKSOS7dRfMm', '3QrlwGn7x5N29gzDXhmj0oITEkCDkoxdTxCvyrVFElM88');
+
+        _cb.setConsumerKey(this.consumer_key, this.consumer_secret);
+        _cb.setToken(this.access_token_key, this.access_token_secret);
+
+        function pushTweet(element: string, index: number, array: any) {
+            self._tweetsReturnedArray.push(element);
+        }
 
         _cb.__call(
             "search_tweets",
-            'q=#météo #' + this.cityTag,
+            'q=#météo #' + city,
             function tweetsFeed(reply: any, rate_limit_status: any) {
                 var theTweets = reply.statuses;
-                function logArrayElements(element: string, index: number, array: any) {
-                    self._arryTemp.push(element);
+
+                // check if array is not empty so empty it
+                if( self._tweetsReturnedArray.length) {
+                    // empty array
+                    self._tweetsReturnedArray.length = 0;
+                    // push new elements to array
+                    theTweets.forEach(pushTweet);
+                }else {
+                    // if array is empty push new elements directly
+                    theTweets.forEach(pushTweet);
                 }
-                theTweets.forEach(logArrayElements);
             },
             true
         );
 
-        return self._arryTemp;
+        return self._tweetsReturnedArray;
+
     }
 
 }

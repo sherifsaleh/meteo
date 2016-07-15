@@ -1,6 +1,7 @@
 import { Component, OnInit} from "@angular/core";
 import { SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES } from "ng-semantic";
 import { AstronautComponent } from "../astronaut/astronaut.component";
+import { TwitterComponent } from '../twitter/twitter.component';
 
 //import { Http } from "@angular/http";
 //import 'rxjs/add/operator/map'
@@ -29,41 +30,20 @@ interface marker {
     selector: "app-gmap",
     templateUrl: `client/components/gmap/gmap.component.html`,
     styleUrls: ['client/components/gmap/gmap.component.css'],
-    directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, AstronautComponent],
+    directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, AstronautComponent, TwitterComponent],
     providers: [WeatherService, TwitterService]
 })
 export class GmapComponent implements OnInit {
     error: string;
     weather: any;
     tweets: any;
-    label: any; // Clicked marker city name
-
-    // example
-    astronauts = ['Lovell', 'Swigert', 'Haise'];
-    history: string[] = [];
-    missions = ['Fly to the moon!',
-             'Fly to mars!',
-             'Fly to Vegas!'];
-    nextMission = 0;
-
+    label: any; // Clicked marker city name;
+    cityName: string;
 
 
     //constructor ( private _http : Http ){}
     constructor( private _weatherService: WeatherService,
-        private _twitterService: TwitterService ){
-        _twitterService.missionConfirmed$.subscribe(
-            astronaut => {
-                    this.history.push(`${astronaut} confirmed the mission`);
-                  });
-    }
-
-    announce() {
-      let mission = this.missions[this.nextMission++];
-      this._twitterService.announceMission(mission);
-      this.history.push(`Mission "${mission}" announced`);
-      if (this.nextMission >= this.missions.length) { this.nextMission = 0; }
-    }
-
+        private _twitterService: TwitterService ){}
 
 
     ngOnInit() {
@@ -78,6 +58,8 @@ export class GmapComponent implements OnInit {
     lng: number = 2.2137490;
 
 
+
+
     clickedMarker(label: string, index: number) {
 
         // setting the label city name to the search weather fun.
@@ -88,21 +70,10 @@ export class GmapComponent implements OnInit {
             this.weather = weather;
             // setting the temp for each marker
             this.markers[index]['temp'] = weather.main.temp;
-            //sending or setting the cityTag in the twitter service to = the label clicked
-            //this._twitterService.cityTag = weather.name;
-            //console.log( this._twitterService.cityTag );
-
-            //this._twitterService.getTweets()
-            //console.log( this._twitterService.getTweets() );
         });
 
-        // this._twitterService.getTweets().subscribe(tweets => {
-        //     this.tweets = tweets;
-        //     //sending or setting the cityTag in the twitter service to = the label clicked
-        //     //this._twitterService.cityTag = weather.name;
-        //     console.log( this.tweets );
-        //     console.log( this._twitterService.cityTag );
-        // });
+        // sending changes of the city name  to the twitter component
+        this.cityName = label;
 
     }
 
@@ -160,7 +131,7 @@ export class GmapComponent implements OnInit {
             lat: 43.6046520,
             lng: 1.4442090,
             temp: 0,
-            label: 'Tolouse',
+            label: 'Toulouse',
             draggable: false
         },
         {
@@ -188,7 +159,7 @@ export class GmapComponent implements OnInit {
             lat: 48.5734053,
             lng: 7.7521113,
             temp: 0,
-            label: 'Strasbourgs',
+            label: 'Strasbourg',
             draggable: false
         },
         {

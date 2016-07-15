@@ -1,38 +1,56 @@
-<br>
-<br>
-<h2>Mission Control</h2>
-<button (click)="announce()">Announce mission</button>
-<my-astronaut *ngFor="let astronaut of astronauts"
-  [astronaut]="astronaut">
-  {{astronaut}}
-</my-astronaut>
-<h3>History</h3>
-<ul>
-  <li *ngFor="let event of history">{{event}}</li>
-</ul>
-<!-- <sebm-google-map
-  [latitude]="lat"
-  [longitude]="lng"
-  [zoom]="zoom"
-  [disableDefaultUI]="false"
-  [zoomControl]="true">
+<div class="col-md-6 padding-0 map-section">
+    <!-- <br>
+    <br>
+    <h2>Mission Control</h2>
+    <button (click)="announce()">Announce mission</button>
+    <my-astronaut *ngFor="let astronaut of astronauts"
+      [astronaut]="astronaut">
+      {{astronaut}}
+    </my-astronaut>
+    <h3>History</h3>
+    <ul>
+      <li *ngFor="let event of history">{{event}}</li>
+    </ul> -->
 
-  <sebm-google-map-marker
-      *ngFor="let m of markers; let i = index"
-      (markerClick)="clickedMarker(m.label, i)"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [label]="m.label"
-      [isOpen]="i.isOpen"
-      >
+<!--     <br><br><br>
 
-    <sebm-google-map-info-window>
-      <strong *ngIf="weather">
-        {{m.label}}
-        {{m.temp | number:'2.0-0' }}°
-      </strong>
-    </sebm-google-map-info-window>
+    <button
+      (click)="clickedCity('paris')">
+      Paris tweets
+    </button>
 
-  </sebm-google-map-marker>
-</sebm-google-map> -->
+    <button
+      (click)="clickedCity('lyon')">
+      lyon tweets
+    </button> -->
+   <sebm-google-map
+     [latitude]="lat"
+     [longitude]="lng"
+     [zoom]="zoom"
+     [disableDefaultUI]="false"
+     [zoomControl]="true">
+
+     <sebm-google-map-marker
+         *ngFor="let m of markers; let i = index"
+         (markerClick)="clickedMarker(m.label, i)"
+         [latitude]="m.lat"
+         [longitude]="m.lng"
+         [label]="m.label"
+         [isOpen]="i.isOpen"
+         >
+
+       <sebm-google-map-info-window>
+         <strong *ngIf="weather">
+           {{m.label}}
+           {{m.temp | number:'2.0-0' }}°
+         </strong>
+       </sebm-google-map-info-window>
+
+     </sebm-google-map-marker>
+   </sebm-google-map>
+</div>
+<div class="col-md-6  tweets-section pull-right">
+    <app-twitter [cityName]="cityName"></app-twitter>
+</div>
+
 

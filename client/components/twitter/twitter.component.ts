@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnDestroy} from '@angular/core';
-//import { Observable } from 'rxjs/Rx';
+import { Component, OnInit, OnChanges, Input, OnDestroy} from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { Subscription }   from 'rxjs/Subscription';
 import { TwitterService } from '../../service/twitter.service';
 
@@ -10,39 +10,26 @@ import { TwitterService } from '../../service/twitter.service';
     templateUrl: `client/components/twitter/twitter.component.html`,
     providers: [TwitterService]
 })
-export class TwitterComponent implements OnInit, OnDestroy{
+export class TwitterComponent implements OnInit, OnDestroy, OnChanges{
     //customers: Observable<any>;
     //tweets: Promise<any>;
     tweets: any[];
-
-    @Input() astronaut: string;
-      mission = '<no mission announced>';
-      confirmed = false;
-      announced = false;
-      subscription: Subscription;
-
+    @Input() cityName: string;
 
     constructor( private _twitterService: TwitterService ) {
-        this.subscription = _twitterService.missionAnnounced$.subscribe(
-          mission => {
-            this.mission = mission;
-            this.announced = true;
-            this.confirmed = false;
-        });
-    }
-
-    confirm() {
-      this.confirmed = true;
-      this._twitterService.confirmMission(this.astronaut);
     }
 
     ngOnInit() {
-        this.tweets = this._twitterService.getTweets();
-
+        this.tweets = this._twitterService.getTweets('France');
     }
 
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
+    // getCityTweets( city: string ){
+    //     this.tweets = this._twitterService.getTweets(city);
+    // }
+
+    ngOnChanges () {
+      this.tweets = this._twitterService.getTweets(this.cityName);
     }
+
 
 }

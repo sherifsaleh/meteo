@@ -106,13 +106,6 @@ export class GmapComponent implements OnInit {
             draggable: false
         },
         {
-            lat: 41.9192290,
-            lng: 8.7386350,
-            temp: 0,
-            label: 'Ajaccio',
-            draggable: false
-        },
-        {
             lat: 43.5528470,
             lng: 7.0173690,
             temp: 0,

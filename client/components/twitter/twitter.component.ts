@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input} from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChange} from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Subscription }   from 'rxjs/Subscription';
 import { TwitterService } from '../../service/twitter.service';
@@ -19,17 +19,21 @@ export class TwitterComponent implements OnInit,  OnChanges{
     constructor( private _twitterService: TwitterService ) {
     }
 
+
+
     ngOnInit() {
-        this.tweets = this._twitterService.getTweets('France');
+        //this.tweets = this._twitterService.getTweets('France');
+    }
+
+    ngOnChanges ( changes: {[cityName: string]: SimpleChange} ) {
+        this.tweets = this._twitterService.getTweets(this.cityName);
     }
 
     // getCityTweets( city: string ){
     //     this.tweets = this._twitterService.getTweets(city);
     // }
 
-    ngOnChanges () {
-      this.tweets = this._twitterService.getTweets(this.cityName);
-    }
+
 
 
 }

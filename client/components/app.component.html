@@ -7,7 +7,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li *ngIf="geolocationObj">
-                <p class="navbar-text" *ngIf="geolocationObj">
+                <p class="navbar-text animated slideInRight" *ngIf="geolocationObj">
                     {{geolocationObj.name}} {{geolocationObj.main.temp | number:'2.0-0'}}°
                 </p>
             </li>

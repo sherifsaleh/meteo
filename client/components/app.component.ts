@@ -1,4 +1,4 @@
-import { Component, OnInit, onChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { WeatherService } from '../service/weather.service';
 
@@ -8,7 +8,7 @@ import { WeatherService } from '../service/weather.service';
     templateUrl: `client/components/app.component.html`,
     providers: [WeatherService]
 })
-export class AppComponent implements OnInit, onChanges{
+export class AppComponent implements OnInit{
 
     geolocationObj: string;
 

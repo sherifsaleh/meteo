@@ -2,6 +2,8 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { Type, enableProdMode, provide } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
+import { WeatherService } from './service/weather.service';
+
 import {
   MapsAPILoader,
   NoOpMapsAPILoader,
@@ -19,6 +21,7 @@ import { APP_ROUTER_PROVIDERS } from "./routes";
 bootstrap(<Type>AppComponent, [
 	APP_ROUTER_PROVIDERS,
 	HTTP_PROVIDERS,
+  WeatherService,
     GOOGLE_MAPS_PROVIDERS,
       provide(LazyMapsAPILoaderConfig, {useFactory: () => {
           let config = new LazyMapsAPILoaderConfig();

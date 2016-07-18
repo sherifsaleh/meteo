@@ -24,7 +24,8 @@ export class TwitterComponent implements OnInit,  OnChanges{
     }
 
     ngOnChanges ( changes: {[cityName: string] : SimpleChange} ) {
-        this.tweets = this._twitterService.getTweets(this.cityName);    }
+        this.tweets = this._twitterService.getTweets(this.cityName);
+    }
 
 
 }

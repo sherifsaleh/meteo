@@ -1,6 +1,9 @@
 import { Component, OnInit} from "@angular/core";
 import { SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES } from "ng-semantic";
 import { TwitterComponent } from '../twitter/twitter.component';
+import { Imarker } from './Imarker';
+import { WeatherService } from '../../service/weather.service';
+import { TwitterService } from '../../service/twitter.service';
 
 //import { Http } from "@angular/http";
 //import 'rxjs/add/operator/map'
@@ -13,24 +16,12 @@ import {
     LazyMapsAPILoaderConfig
 } from 'angular2-google-maps/core';
 
-import { WeatherService } from '../../service/weather.service';
-import { TwitterService } from '../../service/twitter.service';
-
-// just an interface for type safety.
-interface marker {
-    lat: number;
-    lng: number;
-    temp: number;
-    label?: string;
-    draggable: boolean;
-}
-
 @Component({
     selector: "app-gmap",
     templateUrl: `client/components/gmap/gmap.component.html`,
     styleUrls: ['client/components/gmap/gmap.component.css'],
     directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, TwitterComponent],
-    providers: [WeatherService, TwitterService]
+    providers: [TwitterService]
 })
 export class GmapComponent implements OnInit {
     error: string;
@@ -38,8 +29,6 @@ export class GmapComponent implements OnInit {
     tweets: any;
     label: any; // Clicked marker city name;
     cityName: string;
-    loadingStatus:boolean;
-
 
     //constructor ( private _http : Http ){}
     constructor( private _weatherService: WeatherService,
@@ -74,11 +63,10 @@ export class GmapComponent implements OnInit {
 
         // sending changes of the city name  to the twitter component
         this.cityName = label;
-        this.loadingStatus = true;
 
     }
 
-    markers: marker[] = [
+    markers: Imarker[] = [
         {
             lat: 48.8566140,
             lng: 2.3522219,

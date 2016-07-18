@@ -5,8 +5,7 @@ import { WeatherService } from '../service/weather.service';
 @Component({
     directives: [ROUTER_DIRECTIVES],
     selector: "app",
-    templateUrl: `client/components/app.component.html`,
-    providers: [WeatherService]
+    templateUrl: `client/components/app.component.html`
 })
 export class AppComponent implements OnInit{
 

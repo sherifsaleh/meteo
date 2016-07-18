@@ -3,6 +3,8 @@ import { Http, Response } from '@angular/http';
 //import { Observable } from 'rxjs/Rx';
 //import {Subscription} from 'rxjs/Subscription';
 import { Subject }    from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
 
 
@@ -74,9 +76,6 @@ export class TwitterService implements OnInit {
             },
             true // important as docs says
         );
-
-
-
 
 
 

@@ -14,7 +14,7 @@ var isPublic = typeof window != "undefined";
         'rxjs':                       (isPublic)? 'rxjs' : 'node_modules/rxjs',
         'ng-semantic':                (isPublic)? 'ng-semantic' : 'node_modules/ng-semantic',
         //'angular2-google-maps':       'node_modules/angular2-google-maps'
-        //'angular2-google-maps':       'https://npmcdn.com/angular2-google-maps@0.12.0'
+        //'angular2-google-maps':       'https://unpkg.com/angular2-google-maps@0.12.0'
         'angular2-google-maps':         (isPublic)? 'angular2-google-maps' : 'node_modules/angular2-google-maps',
         'codebird':                     (isPublic)? 'codebird' :'node_modules/codebird/'
 
